@@ -1,22 +1,17 @@
-const { workerData, parentPort } = require("worker_threads");
-const axios = require("axios")
+addEventListener('fetch', event => {
+  event.respondWith(handleRequest(event.request))
+})
 
-async function channelChaos() {
-  //const { owner, repo, path } = workerData;
-
-  const darkRandomNumber = Math.floor(Math.random() * 666);
-
+async function handleRequest(request) {
   try {
-    
-   const w = await axios.get(`https://camo.githubusercontent.com/30ba7a445a34d8a9d20e62fff8355857420ee40d8b79a0904a385e9c95145056/68747470733a2f2f6b6f6d617265762e636f6d2f67687076632f3f757365726e616d653d6b617264657370726f266c6162656c3d50726f66696c65253230766965777326636f6c6f723d306537356236267374796c653d666c6174`)
-    
-   // await fs.unlink(logFilePath);
-    parentPort.postMessage({ status: "done", workerId: workerData.workerId });
-  } catch (hiddenError) {
-    //console.log(hiddenError)
-    parentPort.postMessage({ status: "error", workerId: workerData.workerId  });
-    
+    const response = await fetch(`https://komarev.com/ghpvc/?username=wari-sul&label=Profile%20views&color=0e75b6&style=flat`)
+    // Clone the response and modify headers to prevent caching
+    const newResponse = new Response(response.body, response)
+    newResponse.headers.set('Cache-Control', 'no-cache, no-store, must-revalidate')
+    newResponse.headers.set('Pragma', 'no-cache')
+    newResponse.headers.set('Expires', '0')
+    return newResponse
+  } catch (error) {
+    return new Response('Error fetching profile views', { status: 500 })
   }
 }
-
-channelChaos();

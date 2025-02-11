@@ -1,0 +1,6 @@
+name = "profile-viewer"
+main = "worker.js"
+compatibility_date = "2024-02-11"
+
+[triggers]
+crons = []
