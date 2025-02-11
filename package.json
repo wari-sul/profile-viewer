@@ -1,18 +1,16 @@
 {
-  "name": "nodejs",
+  "name": "profile-viewer",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "GitHub Profile Views Counter Worker",
+  "main": "worker.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "deploy": "wrangler deploy",
+    "dev": "wrangler dev"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "dependencies": {
-    "@types/node": "^18.0.6",
-    "axios": "^1.5.0",
-    "colorette": "^2.0.20",
-    "node-fetch": "^3.2.6"
+  "devDependencies": {
+    "wrangler": "^3.0.0"
   }
 }
